@@ -2,7 +2,7 @@
 
 Follow these steps in order. Stop and report if a step fails.
 
-1. Get the repository: `git clone https://github.com/shadowtor/Fusion360Printing.git`, or `git pull` if it exists.
+1. Get the repository: `git clone https://github.com/shadowtor/fusion-studio.git`, or `git pull` if it exists.
 2. Install for the agent you are running in, from the repository root:
    - Claude Code: `python tools/install.py --claude`
    - Codex CLI: `python tools/install.py --codex`

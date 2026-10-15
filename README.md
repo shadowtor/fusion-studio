@@ -1,6 +1,6 @@
 # fusion-studio
 
-[![Smoke test](https://github.com/shadowtor/Fusion360Printing/actions/workflows/test.yml/badge.svg)](https://github.com/shadowtor/Fusion360Printing/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Smoke test](https://github.com/shadowtor/fusion-studio/actions/workflows/test.yml/badge.svg)](https://github.com/shadowtor/fusion-studio/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **An Agent Skill for designing 3D models in Autodesk Fusion with your AI agent** (tested with Claude Code; the installer also targets Codex CLI
 and Gemini CLI, and any agent that reads Agent Skills folders). It drives Fusion through its local MCP server: you bring measurements and photos, it builds a parametric
@@ -11,7 +11,7 @@ model, looks at its own screenshots, checks the result and exports it. It asks f
 
 <sub>Two examples built by the skill: a PETG Monster can holder (Print mode) and an acrylic keychain in an exploded view (Showcase mode). Scripts, screenshots and exports are in [`examples/`](examples).</sub>
 
-**Website:** [shadowtor.github.io/Fusion360Printing](https://shadowtor.github.io/Fusion360Printing/)
+**Website:** [shadowtor.github.io/fusion-studio](https://shadowtor.github.io/fusion-studio/)
 
 **Contents:** [Modes](#the-three-modes) · [What it does](#what-it-does) · [Install](#install) · [Use](#use) · [Example](#example) · [Limits](#what-it-will-not-do) · [Develop](#develop) · [Help](#help-and-status) · [Credits](#credits)
 
@@ -40,15 +40,15 @@ You need Python 3.8+, Autodesk Fusion with its MCP server enabled, and an agent 
 ### A. Claude Code plugin marketplace
 
 ```text
-/plugin marketplace add shadowtor/Fusion360Printing
+/plugin marketplace add shadowtor/fusion-studio
 /plugin install fusion-studio@fusion-studio
 ```
 
 ### B. Installer script (Claude Code, Codex CLI, Gemini CLI, any agent)
 
 ```bash
-git clone https://github.com/shadowtor/Fusion360Printing.git
-cd Fusion360Printing
+git clone https://github.com/shadowtor/fusion-studio.git
+cd fusion-studio
 python tools/install.py --claude --codex          # or --gemini, --project, --dest <folder>, --link
 python skills/fusion-studio/scripts/check_setup.py
 ```
@@ -60,7 +60,7 @@ Manual alternative: copy `skills/fusion-studio` to `~/.claude/skills/fusion-stud
 ```text
 Install the "fusion-studio" Agent Skill for me.
 
-1. Clone https://github.com/shadowtor/Fusion360Printing (or git pull if I already have it) and read
+1. Clone https://github.com/shadowtor/fusion-studio (or git pull if I already have it) and read
    docs/INSTALL-FOR-AGENTS.md in it. Follow that file exactly.
 2. Install it for the agent I am using right now. Only copy the skills/fusion-studio folder.
 3. Run: python skills/fusion-studio/scripts/check_setup.py. If it reports a FAIL, show me the line and stop.
@@ -124,7 +124,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/architecture.md`](docs/archi
 
 ## Help and status
 
-Questions and bugs go in [issues](https://github.com/shadowtor/Fusion360Printing/issues). This is a one-person project in active use, so expect a reply within a week or so, not a day. Security problems: see [`SECURITY.md`](SECURITY.md). Contributions: [`CONTRIBUTING.md`](CONTRIBUTING.md). Everyone taking part follows the [code of conduct](CODE_OF_CONDUCT.md).
+Questions and bugs go in [issues](https://github.com/shadowtor/fusion-studio/issues). This is a one-person project in active use, so expect a reply within a week or so, not a day. Security problems: see [`SECURITY.md`](SECURITY.md). Contributions: [`CONTRIBUTING.md`](CONTRIBUTING.md). Everyone taking part follows the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Credits
 

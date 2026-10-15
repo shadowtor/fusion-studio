@@ -6,8 +6,8 @@
     "name": "Shadowtor",
     "url": "https://github.com/shadowtor"
   },
-  "homepage": "https://github.com/shadowtor/Fusion360Printing",
-  "repository": "https://github.com/shadowtor/Fusion360Printing",
+  "homepage": "https://github.com/shadowtor/fusion-studio",
+  "repository": "https://github.com/shadowtor/fusion-studio",
   "license": "MIT",
   "keywords": ["fusion", "fusion360", "cad", "3d-printing", "parametric", "mcp", "bambu", "mockup"]
 }

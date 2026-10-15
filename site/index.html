@@ -9,7 +9,7 @@
 <meta property="og:title" content="fusion-studio">
 <meta property="og:description" content="Design in Fusion with your AI agent. Parametric models from your measurements, built to print.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://shadowtor.github.io/Fusion360Printing/social-card.png">
+<meta property="og:image" content="https://shadowtor.github.io/fusion-studio/social-card.png">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--bg:#eef1f4;--ink:#14181f;--mute:#4f5966;--blue:#1f5fd6;--card:#fff;--line:rgba(20,24,31,.16)}
@@ -49,13 +49,13 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:.95rem}
 </head>
 <body>
 <div class="wrap">
-<header><span>fusion-studio</span><nav><a href="#modes">Modes</a><a href="#example">Example</a><a href="#install">Install</a><a href="https://github.com/shadowtor/Fusion360Printing">GitHub</a></nav></header>
+<header><span>fusion-studio</span><nav><a href="#modes">Modes</a><a href="#example">Example</a><a href="#install">Install</a><a href="https://github.com/shadowtor/fusion-studio">GitHub</a></nav></header>
 
 <div class="hero">
 <div>
 <h1>Design in Fusion with your AI agent. Built to print.</h1>
 <p class="lead">An Agent Skill that models parts in Autodesk Fusion through its local MCP server. You bring measurements and photos. It builds a parametric model, looks at it, and exports it.</p>
-<a class="btn" href="#install">Install</a><a class="btn alt" href="https://github.com/shadowtor/Fusion360Printing">View source</a>
+<a class="btn" href="#install">Install</a><a class="btn alt" href="https://github.com/shadowtor/fusion-studio">View source</a>
 </div>
 <figure class="shot"><img src="examples/monster-can-holder/iso-transparent.png" alt="A Monster can holder with a finger notch, modelled in Fusion" width="700" height="500"><figcaption>A PETG Monster can holder, built by the skill.</figcaption></figure>
 </div>
@@ -93,21 +93,21 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:.95rem}
 <tr><td>Parameter test</td><td><code>can_dia</code> 66 to 70 mm and back: outside diameter 72 to 76 mm and back, 0 problems both ways</td></tr>
 <tr><td>Not proven</td><td>Fit. The can size is an assumption and nothing has been printed. Measure your can, print once, tune <code>fit_xy</code></td></tr>
 </table>
-<p><a href="https://github.com/shadowtor/Fusion360Printing/tree/main/examples/monster-can-holder">Build script, screenshots, 3MF and STEP</a></p>
+<p><a href="https://github.com/shadowtor/fusion-studio/tree/main/examples/monster-can-holder">Build script, screenshots, 3MF and STEP</a></p>
 <h3>Acrylic keychain (Showcase)</h3>
 <p>Brief: the picture for a crowdfunding page, plus an exploded view for video. Two 3 mm acrylic layers, a printed art sheet and a chrome split ring. One <code>explode_gap</code> parameter spreads the parts.</p>
 <div class="two"><figure class="shot"><img src="examples/acrylic-keychain/assembled.png" alt="Assembled acrylic keychain" width="700" height="500"><figcaption>Assembled</figcaption></figure><figure class="shot"><img src="examples/acrylic-keychain/exploded.png" alt="Exploded view of the acrylic keychain" width="700" height="500"><figcaption>Exploded</figcaption></figure></div>
-<p><a href="https://github.com/shadowtor/Fusion360Printing/tree/main/examples/acrylic-keychain">Build scripts, transparent PNGs, OBJ and STEP</a></p>
+<p><a href="https://github.com/shadowtor/fusion-studio/tree/main/examples/acrylic-keychain">Build scripts, transparent PNGs, OBJ and STEP</a></p>
 </section>
 
 <section id="install">
 <h2>Install</h2>
 <p>You need Python 3.8+, Autodesk Fusion with its MCP server on, and an agent that reads Agent Skills folders.</p>
-<pre>git clone https://github.com/shadowtor/Fusion360Printing.git
-cd Fusion360Printing
+<pre>git clone https://github.com/shadowtor/fusion-studio.git
+cd fusion-studio
 python tools/install.py --claude --codex
 python skills/fusion-studio/scripts/check_setup.py</pre>
-<p>Or in Claude Code: <code>/plugin marketplace add shadowtor/Fusion360Printing</code> then <code>/plugin install fusion-studio@fusion-studio</code>. Start a new session, then ask for a part.</p>
+<p>Or in Claude Code: <code>/plugin marketplace add shadowtor/fusion-studio</code> then <code>/plugin install fusion-studio@fusion-studio</code>. Start a new session, then ask for a part.</p>
 </section>
 
 <footer>MIT licence. Not affiliated with Autodesk. Fusion is a trademark of Autodesk, Inc. The skill sends Python to your own Fusion session: save your work before you start.</footer>
