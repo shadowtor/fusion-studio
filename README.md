@@ -2,8 +2,8 @@
 
 [![Smoke test](https://github.com/shadowtor/Fusion360Printing/actions/workflows/test.yml/badge.svg)](https://github.com/shadowtor/Fusion360Printing/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**An Agent Skill for designing 3D models in Autodesk Fusion with your AI agent** (Claude Code, Codex CLI, Gemini CLI and anything that
-reads Agent Skills folders). It drives Fusion through its local MCP server: you bring measurements and photos, it builds a parametric
+**An Agent Skill for designing 3D models in Autodesk Fusion with your AI agent** (tested with Claude Code; the installer also targets Codex CLI
+and Gemini CLI, and any agent that reads Agent Skills folders). It drives Fusion through its local MCP server: you bring measurements and photos, it builds a parametric
 model, looks at its own screenshots, checks the result and exports it. It asks first whether the project is something you will
 **print**, a **showcase** piece, or an **apparel** mockup, because that changes how the model is built.
 
@@ -13,7 +13,7 @@ model, looks at its own screenshots, checks the result and exports it. It asks f
 
 **Website:** [shadowtor.github.io/Fusion360Printing](https://shadowtor.github.io/Fusion360Printing/)
 
-**Contents:** [Modes](#the-three-modes) · [What it does](#what-it-does) · [Install](#install) · [Use](#use) · [Example](#example) · [Limits](#what-it-will-not-do) · [Develop](#develop) · [Credits](#credits)
+**Contents:** [Modes](#the-three-modes) · [What it does](#what-it-does) · [Install](#install) · [Use](#use) · [Example](#example) · [Limits](#what-it-will-not-do) · [Develop](#develop) · [Help](#help-and-status) · [Credits](#credits)
 
 ## The three modes
 
@@ -121,6 +121,10 @@ python tools/make_social_card.py    # site/social-card.png
 ```
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`docs/architecture.md`](docs/architecture.md).
+
+## Help and status
+
+Questions and bugs go in [issues](https://github.com/shadowtor/Fusion360Printing/issues). This is a one-person project in active use, so expect a reply within a week or so, not a day. Security problems: see [`SECURITY.md`](SECURITY.md). Contributions: [`CONTRIBUTING.md`](CONTRIBUTING.md). Everyone taking part follows the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Credits
 

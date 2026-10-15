@@ -62,7 +62,7 @@ p{{margin:22px 0 0;color:#4f5966;font-size:24px;line-height:1.35}}
 </style><body><div class="safe"><div>
 <div class="name">fusion-studio</div>
 <h1>Design in Fusion with your AI agent. Built to print.</h1>
-<p>Parametric models from your measurements. For Claude Code, Codex and Gemini CLI.</p>
+<p>Parametric models from your measurements. An Agent Skill, tested with Claude Code.</p>
 <div class="chips">{chips}</div></div>
 <div class="tile"><img src="{model_uri()}"><span class="tag">PETG</span><div class="dim">can_dia = 66 mm</div></div></div></body>"""
 
