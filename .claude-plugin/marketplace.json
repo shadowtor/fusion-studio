@@ -1,0 +1,21 @@
+{
+  "name": "fusion-studio",
+  "owner": {
+    "name": "Shadowtor",
+    "url": "https://github.com/shadowtor"
+  },
+  "metadata": {
+    "description": "Design 3D models in Autodesk Fusion with your AI agent.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "fusion-studio",
+      "source": "./",
+      "description": "Parametric 3D design in Autodesk Fusion through its local MCP server, for printed parts, showcase pieces and apparel mockups.",
+      "version": "1.0.0",
+      "category": "design",
+      "keywords": ["fusion", "cad", "3d-printing", "parametric", "mockups"]
+    }
+  ]
+}

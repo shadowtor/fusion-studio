@@ -1,0 +1,13 @@
+{
+  "name": "fusion-studio",
+  "description": "Design 3D models in Autodesk Fusion through its local MCP server. Pick Print, Showcase or Apparel first, then build a parametric model from your measurements, check it, screenshot it and export it.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Shadowtor",
+    "url": "https://github.com/shadowtor"
+  },
+  "homepage": "https://github.com/shadowtor/Fusion360Printing",
+  "repository": "https://github.com/shadowtor/Fusion360Printing",
+  "license": "MIT",
+  "keywords": ["fusion", "fusion360", "cad", "3d-printing", "parametric", "mcp", "bambu", "mockup"]
+}
