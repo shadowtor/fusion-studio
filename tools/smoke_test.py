@@ -39,6 +39,14 @@ for dirpath, _, files in os.walk(ROOT):
             py_compile.compile(os.path.join(dirpath, f), cfile=os.path.join(tempfile.gettempdir(), "x.pyc"), doraise=True)
 ok("python files compile")
 
+# 2b. materials.json is complete for every material
+mj = json.load(open(os.path.join(SK, "assets", "materials.json"), encoding="utf-8"))
+need = {"fit_offset_mm", "min_wall_mm", "min_feature_mm", "overhang_max_deg", "bridge_max_mm", "hole_comp_mm", "enclosure", "notes"}
+for name, mat in mj["materials"].items():
+    if not need <= set(mat):
+        fail("materials.json: %s is missing %s" % (name, need - set(mat)))
+ok("materials.json: %d materials complete" % len(mj["materials"]))
+
 # 3. project scaffold
 with tempfile.TemporaryDirectory() as td:
     subprocess.check_call([sys.executable, os.path.join(S, "new_project.py"), "Smoke Part", "--mode", "showcase", "--dir", td],

@@ -5,16 +5,18 @@
 
 def run(_c):
     new_design()
+    print_profile("PETG")  # fit_*, min_wall, min_feature, hole_comp as parameters; fits are diametral
 
     # measured (assumed for the example: a 500 ml can)
     param("can_dia", "66 mm", "Assumed can diameter: measure the widest point of your can")
     # fit and print
-    param("fit_xy", "0.6 mm", "Radial clearance: cans vary and the holder should drop on and off")
+    param("fit_xy", "0.6 mm", "Radial clearance per side, deliberately loose (1.2 mm total, well above fit_free): cans vary and the holder should drop on and off")
     param("wall", "2.4 mm", "Wall thickness, 6 perimeters at 0.4 mm")
     param("base_t", "3.2 mm", "Base thickness")
     param("hold_h", "55 mm", "Height of wall that grips the can")
     param("notch_w", "34 mm", "Finger notch width")
     param("notch_h", "30 mm", "Finger notch depth down from the rim")
+    param("notch_r", "1.2 mm", "Notch corner radius, removes the knife edge where the notch meets the round wall")
     param("rim_r", "0.8 mm", "Rim fillet, soft on the lips")
     param("foot_ch", "0.6 mm", "Bed-contact chamfer, stops elephant foot")
     # derived
@@ -40,9 +42,12 @@ def run(_c):
 
     body = c.bRepBodies.item(0)
     zt = mm("total_h")
+    # the planar notch meets the round wall at a knife edge: round both corners of the notch so no wall tapers to a sliver
+    fillet(c, edges_where(body, lambda a, b: b.z - a.z > 20 and abs(abs(a.x) - mm("notch_w") / 2) < 0.05 and a.y > 0), "notch_r", "Notch corners")
     # rim fillet first (circular edges on the top face), then the bed chamfer on the base
     fillet(c, edges_where(body, lambda a, b: a.z > zt - 0.01 and b.z < zt + 0.01), "rim_r", "Rim fillet")
     chamfer(c, edges_where(body, lambda a, b: b.z < 0.01 and b.x - a.x > 20), "foot_ch", "Foot chamfer")
     health()
     report()
+    print_check("PETG")
     view((0.8, 1.0, 0.9))

@@ -6,7 +6,8 @@ Ask once at the start of a project. The mode changes what "good" means, so it ch
 
 The model must survive a printer.
 
-- Material and printer first. Default printer: Bambu Lab H2C. See [print-rules.md](print-rules.md).
+- Filament and printer first. Default printer: Bambu Lab H2C. The filament loads a profile with `print_profile()`: [materials.md](materials.md), [print-rules.md](print-rules.md).
+- After building: `print_check()` for walls, overhangs, bridges and holes, `fit_coupon()` for any fit that matters, then `slicer_check.py` ([slicer.md](slicer.md)).
 - One component per part that prints separately, named `<Part> - PRINT`. Parts that print together in one piece are one body.
 - Decide orientation before modelling: the face on the bed, where overhangs fall, where layer lines run against load.
 - Clearances, wall and radii are parameters so a test print can be corrected by editing one number.

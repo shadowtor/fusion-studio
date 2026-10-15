@@ -1,6 +1,6 @@
 # Print rules (starting points, not guarantees)
 
-These are conservative defaults for a 0.4 mm nozzle and 0.2 mm layers. Every value is a **parameter** in the model so a test print can correct it. Where a number depends on the filament brand or the printer's calibration, it says so.
+These are conservative defaults for a 0.4 mm nozzle and 0.2 mm layers. Every value is a **parameter** in the model so a test print can correct it. Where a number depends on the filament brand or the printer's calibration, it says so. Sources: [materials.md](materials.md#sources). The slicer check is in [slicer.md](slicer.md).
 
 ## Printer: Bambu Lab H2C (default)
 
@@ -9,35 +9,19 @@ These are conservative defaults for a 0.4 mm nozzle and 0.2 mm layers. Every val
 - Multi-material through nozzle swapping (Vortek). A single-colour part does not care.
 - Source: Bambu Lab's [H2C announcement](https://blog.bambulab.com/bambu-lab-h2c-where-multi-material-vortek-system-meets-engineering-precision) and independent reviews. Re-check if the user has a different firmware or bed plate.
 
-## Materials
+## Material and fits
 
-| | PLA | PETG | ASA |
-|---|---|---|---|
-| Good for | Display, prototypes, rigid parts indoors | Everyday parts, keychains, clips, some flex | Outdoor, car interior, UV exposure |
-| Watch for | Softens in a hot car, brittle on thin snap parts | Stringing, creeps under constant load, sticks hard to smooth plates | Warps without an enclosure, fumes: ventilate |
-| Snap fits and living hinges | Poor | Good | Good |
-| Fit allowance | Tightest | Add a little over PLA | Add a little over PETG |
+The material sets the fits and the limits for wall thickness, overhang angle and bridge length. Those live in [materials.md](materials.md) and `assets/materials.json`, and `print_profile("PETG")` turns them into parameters. Fits are **diametral** (total across both sides), not per side. Per-side clearance is half. Calibrate with `fit_coupon()`. Never apply a global shrink percentage.
 
-State the material in `project.json`. Clearances below are for PETG. Tighten for PLA by about 0.05 mm, loosen for ASA by about 0.05 mm, then confirm with a test print. Shrinkage differs by brand and enclosure temperature, so there is no universal scale factor: never apply one without a test.
-
-## Fits (per side, 0.4 mm nozzle)
-
-| Fit | Clearance |
-|---|---|
-| Press fit (parts that should not come apart) | 0.05 to 0.1 mm |
-| Snug sliding (tile in a pocket, lid on a box) | 0.2 to 0.3 mm |
-| Free sliding or rotating (hinge pin, dial) | 0.3 to 0.4 mm |
-| Loose, tolerant of warp (large parts) | 0.4 to 0.5 mm |
-
-Small round holes print undersized. Add 0.1 to 0.2 mm to holes under about 6 mm and to magnet pockets, then test.
+Small round holes print undersized. Add `hole_comp` (0.15 to 0.25 mm by material) to holes under about 6 mm and to magnet pockets, then test.
 
 ## Geometry
 
 - Wall thickness: at least 3 perimeters (1.2 mm). Use multiples of 0.4 so the slicer does not leave gaps. 2.4 mm gives 6 perimeters.
 - Minimum feature: 0.8 mm for anything that must survive handling. 0.4 mm details exist but break.
-- Overhangs: 45 degrees or steeper print clean. A small shelf under 2 mm wide is fine. Bridges: keep under 20 mm where you can, and say so when you do not.
+- Overhangs: the limit is per material (35 to 55 degrees from vertical in the profile). A small shelf under about 5 mm is usually fine. Bridges: the limit is per material (10 to 30 mm). `print_check()` reports both. Say so when you accept one.
 - Corners: radius 1 mm or more on outer vertical corners. Sharp interior corners crack, add a 0.5 mm fillet.
-- First layer: a 0.4 mm chamfer on bed-contact edges stops elephant foot.
+- First layer: a 0.4 to 0.6 mm chamfer on bed-contact edges stops elephant foot and splay. Fillet edges normal to the bed to reduce warping.
 - Holes for keyrings: 4 mm minimum, 5 mm comfortable, with at least 3 mm of material around.
 - Tensile loads go across layer lines, never along: a keyring eye should lie flat on the bed so the layers run around the hole.
 - Text and logos: emboss or deboss at least 0.6 mm deep and 1 mm stroke.

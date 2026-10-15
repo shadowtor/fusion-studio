@@ -12,6 +12,9 @@ The skill uses the first three. Everything it builds goes through `featureType: 
 |---|---|---|
 | `scripts/fusion_mcp.py` | on your machine | Calls the server: ping, run a file, screenshot, API lookup, undo |
 | `scripts/fx_lib.py` | inside Fusion | Parameters, components, parametric sketches, extrude, fillet, health check, report, export. Prepended with `--lib` |
+| `scripts/fx_print.py` | inside Fusion | Print mode: `print_profile`, `print_check`, `fit_coupon`. Prepended after `fx_lib.py` with `--lib` |
+| `assets/materials.json` | read by both | Per-filament limits and the slicer profile names. Injected into scripts as `MATERIALS` |
+| `scripts/slicer_check.py` | on your machine | Runs OrcaSlicer headless: geometry, slice, forced supports, best orientation |
 | `scripts/new_project.py` | on your machine | Creates the project folder and `project.json` for the chosen mode |
 | `scripts/check_setup.py` | on your machine | Confirms Python and the server |
 | `references/*.md` | read by the agent | Modes, print rules, API notes |

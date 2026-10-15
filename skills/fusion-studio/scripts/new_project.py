@@ -16,10 +16,13 @@ MODES = {
 ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument("name")
 ap.add_argument("--mode", required=True, choices=MODES)
-ap.add_argument("--material", default="PETG")
+ap.add_argument("--material", default="PETG", help="PLA, PETG, ABS, ASA, TPU, PA, PC, PLA-CF, PETG-CF, PA-CF")
 ap.add_argument("--printer", default="Bambu Lab H2C")
 ap.add_argument("--dir", default=".")
 a = ap.parse_args()
+MATS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "materials.json")))["materials"]
+if a.mode == "print" and a.material not in MATS:
+    raise SystemExit("Unknown material %r. Choose from: %s" % (a.material, ", ".join(MATS)))
 
 slug = re.sub(r"[^a-z0-9]+", "-", a.name.lower()).strip("-")
 root = os.path.join(a.dir, slug)
@@ -27,7 +30,7 @@ for d in ("build", "shots", "exports"):
     os.makedirs(os.path.join(root, d), exist_ok=True)
 proj = {"name": a.name, "mode": a.mode, "deliverables": MODES[a.mode], "assumptions": [], "open_questions": []}
 if a.mode == "print":
-    proj.update({"material": a.material, "printer": a.printer, "nozzle_mm": 0.4, "first_test_print": ""})
+    proj.update({"material": a.material, "printer": a.printer, "nozzle_mm": 0.4, "orientation": "", "supports": "", "fit_coupon_result": "", "slicer_findings": [], "first_test_print": ""})
 path = os.path.join(root, "project.json")
 if os.path.exists(path):
     raise SystemExit(f"{path} exists, not overwriting")

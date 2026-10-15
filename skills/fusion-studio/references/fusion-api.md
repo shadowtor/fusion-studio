@@ -5,6 +5,7 @@ Verified against Fusion 2705.1 while building the example in this repo. Everythi
 ## Execution
 
 - The script must define `def run(_context):`. Anything printed comes back as the result. An exception comes back as the error with a line number: the line number counts the prepended `fx_lib.py` when you use `--lib`.
+- **Never put a line of several KB in a script** (a big JSON blob on one line, say). Fusion then runs nothing and returns an empty `message` with `success: true`, with no error. Format data as a multi-line literal. An empty result from a script that should print is this failure until proven otherwise.
 - Results arrive as JSON (`message`, `success`). `fusion_mcp.py` unwraps them.
 - Scripts that create or change anything cannot run while a command dialog is open (the user is mid-sketch or mid-extrude). Ask them to close it, or pass `--ro` for inspection.
 - `app.documents.add(...)` creates a new document and makes it active. Failed runs leave half-built documents behind, so build in one new document and keep scripts re-runnable by starting each project script with `new_design()` only once.

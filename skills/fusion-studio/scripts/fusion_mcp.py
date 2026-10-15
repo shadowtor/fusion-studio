@@ -13,7 +13,7 @@ Use it from a shell when the MCP tools are not loaded in the agent, or to run fi
 
 Env: FUSION_MCP_URL overrides the endpoint. Exit code is 1 when Fusion reports an error.
 """
-import argparse, base64, json, os, sys, urllib.request
+import argparse, base64, json, os, pprint, sys, urllib.request
 
 URL = os.environ.get("FUSION_MCP_URL", "http://127.0.0.1:27182/mcp")
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -95,7 +95,11 @@ def main():
         if a.cmd == "eval" and "def run" not in src:
             src = "import adsk.core, adsk.fusion\ndef run(_c):\n" + "\n".join("    " + l for l in src.splitlines())
         if a.lib:
-            src = open(os.path.join(HERE, "fx_lib.py"), encoding="utf-8").read() + "\n\n" + src
+            # multi-line literal on purpose: Fusion silently runs nothing when a script has a line of several KB
+            mats = pprint.pformat(json.load(open(os.path.join(HERE, "..", "assets", "materials.json"), encoding="utf-8")), width=100)
+            src = ("MATERIALS = " + mats + "\n"
+                   + open(os.path.join(HERE, "fx_lib.py"), encoding="utf-8").read() + "\n\n"
+                   + open(os.path.join(HERE, "fx_print.py"), encoding="utf-8").read() + "\n\n" + src)
         err, out = run_script(src, a.ro)
         print(out); sys.exit(1 if err else 0)
     elif a.cmd == "shot":

@@ -64,7 +64,7 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:.95rem}
 <h2>Pick the mode first</h2>
 <p class="lead">The mode decides what good means, so the skill asks before it models anything.</p>
 <div class="grid">
-<div class="card"><h3>Print</h3><p>A part you will print in PLA, PETG, ASA or similar. Fit clearances, wall rules, orientation and one component per printed part. Defaults to the Bambu Lab H2C. Exports 3MF and STEP.</p></div>
+<div class="card"><h3>Print</h3><p>A part you will print in PLA, PETG, ASA or similar. You name the filament and it loads that material's fits and its limits for wall thickness, overhang angle and bridge length, checks the finished model against them, then slices it headless to see if it needs supports. Defaults to the Bambu Lab H2C. Exports 3MF and STEP.</p></div>
 <div class="card"><h3>Showcase</h3><p>Not printed. Acrylic keychains for a crowdfunding page, exploded views for video. Layered parts at real material thickness, transparent PNGs, OBJ export.</p></div>
 <div class="card"><h3>Apparel</h3><p>Clothing brand mockups: hang tags, label plates, buttons, zip pulls, hat badges, packaging. Rigid pieces only, not fabric.</p></div>
 </div>
@@ -77,7 +77,7 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:.95rem}
 <li><strong>Brief.</strong> You pick the mode, the material and share sizes: the tile, the phone, the magnet. Anything missing becomes a named parameter with a stated assumption.</li>
 <li><strong>Parameters first.</strong> Measured, fit and derived values, each with a comment. Change one and the model follows.</li>
 <li><strong>Build in small scripts.</strong> After each one it takes a screenshot and reads it.</li>
-<li><strong>Verify.</strong> Timeline health, bed fit, then a parameter change to prove the model survives it.</li>
+<li><strong>Verify.</strong> Timeline health, then a material check for walls, overhangs, bridges and holes, a parameter change to prove the model survives it, and a slicer run for supports and orientation.</li>
 <li><strong>Hand over.</strong> Files, parameters, assumptions, and the first test print to run.</li>
 </ol>
 </section>
@@ -88,7 +88,9 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:.95rem}
 <p>Brief: a desk holder for a tall can, PETG, with a finger notch so the can lifts out. It prints upright on its base with no supports and no bridges.</p>
 <table>
 <tr><th>Check</th><th>Result</th></tr>
-<tr><td>Timeline</td><td>10 features, 0 problems</td></tr>
+<tr><td>Timeline</td><td>11 features, 0 problems</td></tr>
+<tr><td>Material check (PETG)</td><td>0 warnings. The first version warned about a 0.6 mm knife edge at the finger notch, so its corners are now filleted</td></tr>
+<tr><td>Slicer check</td><td>OrcaSlicer on the H2C profiles: watertight, 1 h 32 min, 36.7 g, no supports needed even when forced on, and the slicer's best orientation matches the export</td></tr>
 <tr><td>Size</td><td>72 x 72 x 58.2 mm, 39.2 cm3, fits the bed</td></tr>
 <tr><td>Parameter test</td><td><code>can_dia</code> 66 to 70 mm and back: outside diameter 72 to 76 mm and back, 0 problems both ways</td></tr>
 <tr><td>Not proven</td><td>Fit. The can size is an assumption and nothing has been printed. Measure your can, print once, tune <code>fit_xy</code></td></tr>
