@@ -37,7 +37,7 @@ jobs:
             cp examples/$e/*.png "_site/examples/$e/"
           done
           touch _site/.nojekyll
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
